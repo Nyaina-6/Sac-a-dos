@@ -23,7 +23,7 @@ typedef struct Objet {
 
 int read_TP2_instance(FILE* fin, dataSet* dsptr);
 int* KP_greedy(dataSet* dsptr);
-double* KP_LP(dataSet* dsptr);
-int* knapsack_preprocessing(dataSet data, int c_optimal, int* b_new) ;
+double* KP_LP(dataSet data);
+void knapsack_preprocessing(dataSet data) ;
 
 #endif

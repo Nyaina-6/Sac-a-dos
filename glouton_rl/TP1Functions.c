@@ -83,7 +83,7 @@ double* KP_LP(dataSet* dsptr) {
     }
 
     qsort(utilities, dsptr->n, sizeof(Objet), compare); 
-    double* solution = calloc(dsptr->n, sizeof(int)); 
+    double* solution = calloc(dsptr->n, sizeof(double)); 
     double remaining_capacity = dsptr->b; 
     double quantity = 0;
 
@@ -93,7 +93,7 @@ double* KP_LP(dataSet* dsptr) {
             break; 
         }
             double min_quantity = (double)remaining_capacity / dsptr->a[utilities[j].index];
-            printf  ("%f, %d\n", min_quantity, dsptr->a[utilities[j].index]);
+            //printf  ("%f, %d\n", min_quantity, dsptr->a[utilities[j].index]);
             if (min_quantity >= 1) {
                 quantity = 1;
             } 
@@ -106,3 +106,5 @@ double* KP_LP(dataSet* dsptr) {
     free(utilities); 
     return solution; 
 }
+
+

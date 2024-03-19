@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     snprintf(instance_file,
              1024,
              "%s",
-             "instances.csv");
+             "instance3.csv");
 
     char c;
     while ((c = getopt(argc, argv, "F:h")) != EOF) {
@@ -41,15 +41,8 @@ int main(int argc, char** argv) {
     read_TP2_instance(fin, &data);
     fclose(fin);
 
-    /**FILE* file = fopen("instances.csv", "w");
-    if (file == NULL) {
-        perror("Error opening file");
-        return EXIT_FAILURE;
-    }
+  
 
-    srand(time(NULL));
-    generate_instance(file);
-        fclose(file);*/
     printf("Resolution dynamique normale \n");
     knapsack(data);
     printf("\n\n");

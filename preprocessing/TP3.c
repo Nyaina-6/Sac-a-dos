@@ -15,6 +15,12 @@ int main(int argc, char** argv) {
              1024,
              "%s",
              "instance3.csv");
+    
+    char instance_preprocessing[1024];
+    snprintf(instance_preprocessing,
+             1024,
+             "%s",
+             "instances_reduites.csv");
 
     char c;
     while ((c = getopt(argc, argv, "F:h")) != EOF) {
@@ -40,16 +46,23 @@ int main(int argc, char** argv) {
     FILE* fin = fopen(instance_file, "r");
     read_TP2_instance(fin, &data);
     fclose(fin);
+    
+    /**dataSet reduced_knapsack ;
+
+    FILE* fin = fopen(instance_preprocessing, "r");
+    read_TP2_instance(fin, &reduced_knapsack);
+    fclose(fin);*/
    
-    int* selected = knapsack_preprocessing(data, data.n, &data.b);
+    knapsack_preprocessing(data);
 
-    printf("Selected items after preprocessing:\n");
-    for (int i = 0; i < data.n; i++) {
-        if (selected[i])
-            printf("Item %d (weight: %d, value: %d)\n", i, data.a[i], data.c[i]);
-    }
+    /**dataSet reduced_knapsack;
+    reduced_knapsack.n = reduced_items_number;
+    reduced_knapsack.b = reduced_capacity;
+    reduced_knapsack.c = (int *)malloc (sizeof(int*)*reduced_items_number);
+    reduced_knapsack.a =(int *)malloc(sizeof(int*)*reduced_items_number);
+    */
 
-    free(selected);
+    
     
     return  EXIT_SUCCESS;
 }

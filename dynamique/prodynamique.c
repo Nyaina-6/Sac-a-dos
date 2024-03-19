@@ -79,19 +79,17 @@ void knapsack(dataSet data) {
     printf("Objets séléctionnés:\n");
     w = data.b;
     int poids_total = 0;
-    int valeur_optimale = 0;
     for (i = data.n; i > 0 && w > 0; i--) {
         if (select[i][w]) {
             printf("Objet %d (poids: %d, valeur: %d)\n", i - 1, data.a[i - 1], data.c[i - 1]);
             w -= data.a[i - 1];
             poids_total += data.a[i-1]; 
-            valeur_optimale += data.c[i-1];
 
         }
 
     }
     printf("Poids des objets séléctionnés: %d\n", poids_total);
-    printf("Valeur optimale: %d\n", valeur_optimale);
+    printf("Valeur optimale de la programmation dynamique : %d\n", opt[data.n][data.b]);    
     
 
 }
@@ -141,18 +139,16 @@ void knapsack_tri(dataSet data) {
     printf("Objets sélectionnés:\n");
     w = data.b;
     int poids_total = 0;
-    int valeur_optimale = 0;
 
     for (i = data.n; i > 0 &&  w >0 ; i--) {
         if (select[i][w]) {
             printf("Objet %d (poids: %d, valeur: %d)\n", utilities[i - 1].index, data.a[utilities[i - 1].index], data.c[utilities[i - 1].index]);
             w -= data.a[utilities[i - 1].index];
             poids_total += data.a[utilities[i - 1].index];
-            valeur_optimale += data.c[utilities[i-1].index];
         }
     }
     printf("Poids des objets sélectionnés: %d\n", poids_total);
-    printf("Valeur optimale: %d\n", valeur_optimale);
+    printf("Valeur optimale de la programmation dynamique : %d\n", opt[data.n][data.b]);    
     
     free(utilities);
 }
